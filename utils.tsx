@@ -43,7 +43,7 @@ export const DistortionSVGFilter = (
         <filter id="filter">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0 0.15"
+            baseFrequency="0.1 0.3"
             numOctaves="1"
             result="warp"
           />
@@ -118,8 +118,6 @@ export const determineStyle = (ratio: number, mode) => {
   const str = ratio.toString();
   const first = str[0];
 
-  // console.log(first, "first (colors)")
-
   if (['0', '9', '8'].includes(first)) return deep;
   if (['5', '6', '7'].includes(first)) return funk;
   if (['2', '3', '4'].includes(first)) return swiss;
@@ -127,13 +125,15 @@ export const determineStyle = (ratio: number, mode) => {
 };
 
 export const determineColumns = (letterTotal: number, mode: string) => {
+
   /* dev */
   if (mode === 'random') {
     const random = Math.floor(Math.random() * (9 - 0 + 1) + 0);
 
-    if ([0, 9, 8].includes(random)) return 8;
+    if ([9, 8].includes(random)) return 8;
     if ([5, 6, 7].includes(random)) return 6;
     if ([1, 2, 3, 4].includes(random)) return 4;
+    if ([0].includes(random)) return 12;
   }
 
   /* prod */
@@ -148,13 +148,14 @@ export const determineColumns = (letterTotal: number, mode: string) => {
 };
 
 export const determineGap = (numberTotal: number, mode: string) => {
+
   /* dev */
   if (mode === 'random') {
     const random = Math.floor(Math.random() * (9 - 0 + 1) + 0);
 
-    if ([0, 9, 8].includes(random)) return 10;
-    if ([5, 6, 7].includes(random)) return 6;
-    if ([2, 3, 4].includes(random)) return 4;
+    if ([0, 9, 8].includes(random)) return 44;
+    if ([5, 6, 7].includes(random)) return 22;
+    if ([2, 3, 4].includes(random)) return 6;
     if ([1].includes(random)) return 0;
   }
 
@@ -192,8 +193,6 @@ export const determineRandomStyle = (ratio: number, mode: string): Effects => {
   /* prod */
   const str = ratio.toString();
   const last = str[str.length - 1];
-
-  // console.log(last, "last (random style)")
 
   if (['0', '9'].includes(last)) return skew;
   if (['1'].includes(last)) return distort;
