@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 import {nftaddress} from '../config';
 import NFT from '../artifacts/contracts/GitDenza.sol/GitDenza.json';
 import {motion} from 'framer-motion';
-import fs from 'fs';
 import {
   determineColumns,
   determineGap,
@@ -12,7 +11,7 @@ import {
   SEED,
 } from '../utils';
 
-const infuraId = fs.readFileSync('.infuraid').toString();
+const infuraId = '07238825609d49fe891a96e3f14ecf2a'
 
 const container = {
   hidden: {opacity: 0},
