@@ -36,16 +36,16 @@ What you'll get, exactly, is randomized between these ranges:
   - Deep (30%)
   - Swiss (30%)
   - Tosh (10%)
-- **Grid Columns**
+- **Grid Gap**
   - 44px (30%)
   - 22px (30%)
   - 6px (30%)
   - 0px (10%)
-- **Grid Gap**
-  - 10 (30%)
-  - 6 (30%)
+- **Grid Columns**
   - 4 (30%)
-  - 0 (10%)
+  - 6 (30%)
+  - 8 (30%)
+  - 12 (10%)
 - **Transforms**
   - None (70%)
   - Skewed (20%)
