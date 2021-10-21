@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, KeyboardEvent} from 'react';
 import {ethers} from 'ethers';
 import Web3Modal from 'web3modal';
 import {nftaddress} from '../config';
@@ -7,7 +7,13 @@ import GDZ from '../artifacts/contracts/GitDenza.sol/GitDenza.json';
 export default function CreateItem() {
   const [formInput, updateFormInput] = useState({hash: ''});
 
-  async function mint() {
+  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      mint();
+    }
+  };
+
+  const mint = async () => {
     const {hash} = formInput;
 
     if (hash.length !== 40) {
@@ -21,7 +27,7 @@ export default function CreateItem() {
     if (!numbers || !letters) {
       alert('Must be a valid git hash');
       return;
-    } 
+    }
 
     /* initialize */
     const web3Modal = new Web3Modal();
@@ -34,18 +40,29 @@ export default function CreateItem() {
 
     let transaction = await contract.safeMint(hash);
 
-    alert(`Complete! Transaction Hash: ${transaction.hash}`)
+    alert(`Complete! Transaction Hash: ${transaction.hash}`);
 
-    location.href = '/'
-  }
+    location.href = '/';
+  };
 
   return (
     <div className="flex justify-center">
-      <div className="w-1/2 flex flex-col pb-12">
+      <div className="w-2/3 flex flex-col pb-12">
+        <h3 className="text-xl mt-6 font-bold">
+          1. In Metamask, select the Ropsten Developer Network (Network {'->'} Ropsten)
+        </h3>
+        <h3 className="text-xl py-2 font-bold">
+          2. Ensure you have enough ETH to cover the Gas (
+          <a className="border-bottom-100 underline" href="https://faucet.ropsten.be/">
+            use the faucet
+          </a>{' '}
+          if not)
+        </h3>
         <input
-          placeholder="Gist Hash"
+          placeholder="Git Hash"
           className="mt-8 border rounded p-4"
           onChange={e => updateFormInput({hash: e.target.value})}
+          onKeyPress={handleKeyPress}
         />
         <button
           onClick={mint}

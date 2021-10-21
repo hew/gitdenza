@@ -130,17 +130,15 @@ export const determineColumns = (letterTotal: number, mode: string) => {
   if (mode === 'random') {
     const random = Math.floor(Math.random() * (9 - 0 + 1) + 0);
 
-    if ([9, 8].includes(random)) return 8;
+    if ([9, 8, 4].includes(random)) return 8;
     if ([5, 6, 7].includes(random)) return 6;
-    if ([1, 2, 3, 4].includes(random)) return 4;
+    if ([1, 2, 3].includes(random)) return 4;
     if ([0].includes(random)) return 12;
   }
 
   /* prod */
   const str = letterTotal.toString();
   const first = str[0];
-
-  // console.log(first, "first (columns)")
 
   if (['0', '9', '8'].includes(first)) return 8;
   if (['5', '6', '7'].includes(first)) return 6;
@@ -162,8 +160,6 @@ export const determineGap = (numberTotal: number, mode: string) => {
   /* prod */
   const str = numberTotal.toString();
   const first = str[0];
-
-  // console.log(first, "first (gap)")
 
   if (['0', '9', '8'].includes(first)) return 10;
   if (['5', '6', '7'].includes(first)) return 6;

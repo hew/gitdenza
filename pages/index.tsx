@@ -65,8 +65,6 @@ export default function Home({hash, mode}) {
 
   if (!seed?.numbers?.length) return null;
 
-
-
   const {ratio, numberTotal, letterTotal, hashArr} = seed;
   const {effect, data} = determineRandomStyle(ratio, mode);
   const columnCount = determineColumns(letterTotal, mode);
