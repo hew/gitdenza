@@ -62,7 +62,7 @@ export default function Home({hash, mode}) {
 
   useEffect(() => {
     setSeed(SEED(hash));
-  }, []);
+  }, [hash]);
 
   if (!seed?.numbers?.length) return null;
 
