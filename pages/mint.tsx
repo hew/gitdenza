@@ -2,7 +2,6 @@ import {useState} from 'react';
 import {ethers} from 'ethers';
 import Web3Modal from 'web3modal';
 import {nftaddress} from '../config';
-
 import GDZ from '../artifacts/contracts/GitDenza.sol/GitDenza.json';
 
 export default function CreateItem() {
