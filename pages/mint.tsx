@@ -15,6 +15,14 @@ export default function CreateItem() {
       return;
     }
 
+    const numbers = hash.toLowerCase().match(/\d/g);
+    const letters = hash.toLowerCase().match(/[A-Za-z]/g);
+
+    if (!numbers || !letters) {
+      alert('Must be a valid git hash');
+      return;
+    } 
+
     /* initialize */
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
@@ -24,7 +32,7 @@ export default function CreateItem() {
     /* create the item */
     const contract = new ethers.Contract(nftaddress, GDZ.abi, signer);
 
-    let transaction = await contract.safeMint(formInput.hash);
+    let transaction = await contract.safeMint(hash);
 
     alert(`Complete! Transaction Hash: ${transaction.hash}`)
 

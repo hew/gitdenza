@@ -1,8 +1,10 @@
 # Gitdenza
 
+https://gitdenza.netlify.app
+
 By hew
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/92ae9d28-7022-4b70-aa7f-407dc5505682/deploy-status)](https://app.netlify.com/sites/flamboyant-stonebraker-bc9010/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92ae9d28-7022-4b70-aa7f-407dc5505682/deploy-status)](https://app.netlify.com/sites/gitdenza/deploys)
 
 ## What Are We Looking At Here?
 
@@ -13,15 +15,19 @@ So put simply, this is a _super basic_ experiment in generative art.
 
 ## Website & Cryptonomics
 
-Before I get into the cryptonomics, let's walk through how the website works:
+### Dynamic Colors
 
-### Dynamic / Random
+I want some degree of re-loadability and fun to the website, so the colors are not tied to the seed hash. 
 
-- Theme-specific colors — I want to have some of re-loadability and randomness to the site, so with every reload the colors on the squares are re-organized.
+- (Theme-specific) colors — with every reload the colors on the squares are re-organized, but the color palatte is confined to the current theme.
 
 ### NFT-driven
 
-- Theme - there are 4 themes
+Everything else is driven by the seed hash, and the website will use the _last minted token's_ hash. So put simply, click 'mint,' enter your hash, and as soon as the transaction goes through, you'll see the website's design has changed.
+
+What you'll get, exactly, is randomized between these ranges:
+
+- Theme 
   - funk (30%)
   - deep (30%)
   - swiss (30%)
@@ -40,7 +46,9 @@ Before I get into the cryptonomics, let's walk through how the website works:
   - Skewed (20%)
   - Distorted (10%)
 
-You mint a token for free (actually free, it's on Ropsten so just request some eth from the [Faucet](https://faucet.ropsten.be/)).
+You mint a token for free (actually free, it's on Ropsten so just request some eth from the [Faucet](https://faucet.ropsten.be/) and you are gtg).
+
+--- 
 
 ## Crypto Art: On-chain Or Off-chain Data?
 
@@ -50,3 +58,8 @@ take a different approach where a seed algorithm is stored on-chain, and the art
 of art.
 
 Instead of hashing some algorithm or using IPFS, what I wanted to do with this project was instead save git hashes on-chain. Credit for this idea goes to [Matt DesLauriers](https://twitter.com/mattdesl/status/1449138381091377157).
+
+Inspirations:
+* Tyler Hobbs
+* Nader Dabit
+* Matt DesLauriers
